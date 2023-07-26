@@ -1,7 +1,8 @@
 package com.example.login.di
 
 import com.example.login.ui.LoginFragment
-import com.example.login.ui.LoginViewModelFactory
+import com.example.login.ui.LoginViewModel
+import dagger.Binds
 import dagger.Component
 
 /**
@@ -12,7 +13,8 @@ interface LoginComponent {
 
     fun inject(fragment: LoginFragment)
 
-    fun viewModelFactory(): LoginViewModelFactory
+    @Binds
+    fun viewModelFactory(): LoginViewModel
 
     @Component.Builder
     interface Builder {

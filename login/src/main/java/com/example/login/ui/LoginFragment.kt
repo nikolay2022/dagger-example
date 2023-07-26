@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.login.di.DaggerLoginComponent
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.mylibrary.databinding.FragmentLoginBinding
 import javax.inject.Inject
 
@@ -19,15 +19,20 @@ import javax.inject.Inject
 class LoginFragment : Fragment() {
 
     @Inject
-    lateinit var viewModelFactory: LoginViewModelFactory
+    lateinit var viewModelFactory: LoginViewModel.Factory
 
-    private val registrationViewModel: LoginViewModel by viewModels { viewModelFactory }
+//    @Inject
+//    lateinit var viewModelFactory1: LoginViewModelFactory
+
+    private val registrationViewModel: LoginViewModel by viewModels {
+        viewModelFactory.create(1)
+    }
 
     private lateinit var binding: FragmentLoginBinding
 
     override fun onAttach(context: Context) {
         //такие вещи можно вынести в холдер, можно в абстарктный класс
-        DaggerLoginComponent.builder().build().inject(this)
+//        DaggerLoginComponent.builder().build().inject(this)
         super.onAttach(context)
     }
 

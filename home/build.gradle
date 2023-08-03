@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.login'
+    namespace 'com.example.home'
     compileSdk 33
 
     defaultConfig {

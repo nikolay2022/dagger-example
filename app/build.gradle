@@ -64,4 +64,5 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.47'
 
     implementation project(path: ':login')
+    implementation project(path: ':home')
 }

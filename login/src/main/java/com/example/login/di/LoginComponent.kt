@@ -1,13 +1,13 @@
 package com.example.login.di
 
-import com.example.login.ui.LoginFragment
-import com.example.login.ui.LoginViewModelFactory
+import com.example.login.presentation.LoginFragment
+import com.example.login.presentation.LoginViewModelFactory
 import dagger.Component
 
 /**
- * Created by Nikolay Yakushov on 14.07.2023.
+ * Created by Nikolay Yakushov on 03.08.2023.
  */
-@Component(modules = [LoginViewModelModule::class])
+@Component(modules = [LoginViewModelModule::class, LoginModule::class])
 interface LoginComponent {
 
     fun inject(fragment: LoginFragment)

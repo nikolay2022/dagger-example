@@ -1,7 +1,7 @@
-package com.example.login.di
+package com.example.home.di
 
 import androidx.lifecycle.ViewModel
-import com.example.login.presentation.LoginViewModel
+import com.example.home.presentation.HomeViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -9,12 +9,12 @@ import dagger.multibindings.IntoMap
 import kotlin.reflect.KClass
 
 @Module
-abstract class LoginViewModelModule {
+abstract class HomeViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(LoginViewModel::class)
-    abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun bindHomeViewModel(viewModel: HomeViewModel): ViewModel
 
 }
 

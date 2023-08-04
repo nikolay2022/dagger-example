@@ -9,16 +9,17 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.home.databinding.FragmentDetailsBinding
 import com.example.home.di.DaggerHomeComponent
+import javax.inject.Inject
 
 /**
  * Created by Nikolay Yakushov on 04.08.2023.
  */
 class DetailsFragment : Fragment() {
 
-//    @Inject
-//    lateinit var viewModelFactory: LoginViewModelFactory
-//
-//    private val registrationViewModel: LoginViewModel by viewModels { viewModelFactory }
+    @Inject
+    lateinit var detailsViewModelFactory: DetailsViewModel.Factory
+
+    private lateinit var viewModel: DetailsViewModel
 
     private lateinit var binding: FragmentDetailsBinding
 
@@ -35,20 +36,17 @@ class DetailsFragment : Fragment() {
     ): View {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
 
-        // Извлекаем значение из Bundle
-        val itemKey: String = arguments?.getString("key") ?: ""
-
-        // Инициализируем ViewModel с использованием полученного значения
-//        viewModel = ViewModelProvider(this, DetailViewModelFactory(itemKey)).get(DetailViewModel::class.java)
-
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val itemKey = arguments?.getString("key") ?: ""
+        viewModel = detailsViewModelFactory.create(itemKey)
+
         val textView: TextView = binding.textDashboard
+        textView.text = viewModel.getDashboardText()
     }
 
 }

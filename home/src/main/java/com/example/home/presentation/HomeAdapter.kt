@@ -28,7 +28,9 @@ class HomeAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textView.text = items[position].text
-        holder.itemView.setOnClickListener { listener.onItemClicked(items[position]) }
+        holder.itemView.setOnClickListener {
+            listener.onItemClicked(items[position])
+        }
     }
 
     override fun getItemCount() = items.size

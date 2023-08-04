@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.home.domain.models.TextItem
 import com.example.home.domain.repositories.DataRepository
 import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
 
@@ -18,21 +19,22 @@ class DetailsViewModel @AssistedInject constructor(
     @Assisted private val itemKey: String
 ) : ViewModel() {
 
-//    @AssistedFactory
-//    interface Factory : AssistedSavedStateViewModelFactory<DetailViewModel>
+    @AssistedFactory
+    interface Factory {
+        fun create(@Assisted itemKey: String): DetailsViewModel
+    }
 
-
-    private val _dataLiveData = MutableLiveData<List<TextItem>>()
-    val dataLiveData: LiveData<List<TextItem>> = _dataLiveData
+//    private val _dataLiveData = MutableLiveData<List<TextItem>>()
+//    val dataLiveData: LiveData<List<TextItem>> = _dataLiveData
 
     fun getDashboardText(): String {
-        return "Ура, ты авторизован"
+        return "Вы открыли item $itemKey"
     }
 
-    init {
-        viewModelScope.launch {
-            _dataLiveData.value = dataRepository.getData()
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            _dataLiveData.value = "Вы открыли item $itemKey"
+//        }
+//    }
 
 }

@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.home.presentation.HomeFragment"
+        android:name="com.example.home.presentation.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details">
     </fragment>

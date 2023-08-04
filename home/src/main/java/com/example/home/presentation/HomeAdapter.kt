@@ -11,7 +11,7 @@ import com.example.home.domain.models.TextItem
 class HomeAdapter(
     var items: List<TextItem>,
     private val listener: ItemClickListener
-    ) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
     interface ItemClickListener {
         fun onItemClicked(item: TextItem)

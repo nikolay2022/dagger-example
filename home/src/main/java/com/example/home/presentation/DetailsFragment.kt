@@ -46,7 +46,7 @@ class DetailsFragment : Fragment() {
         viewModel = detailsViewModelFactory.create(itemKey)
 
         val textView: TextView = binding.textDashboard
-        textView.text = viewModel.getDashboardText()
+        textView.text = viewModel.getText()
     }
 
 }

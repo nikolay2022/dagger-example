@@ -11,8 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
+import com.example.home.R
 import com.example.home.di.DaggerHomeComponent
 import com.example.home.databinding.FragmentHomeBinding
+import com.example.home.domain.models.TextItem
 import javax.inject.Inject
 
 /**
@@ -46,7 +48,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = HomeAdapter(emptyList())
+        val adapter = HomeAdapter(emptyList(), object : HomeAdapter.ItemClickListener {
+            override fun onItemClicked(item: TextItem) {
+                val bundle = Bundle().apply {
+                    putString("key", item.id.toString())
+                }
+                findNavController().navigate(R.id.detailsFragment, bundle)
+            }
+        })
 
         registrationViewModel.dataLiveData.observe(viewLifecycleOwner) { data ->
             adapter.items = data

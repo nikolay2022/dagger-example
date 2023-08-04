@@ -15,4 +15,11 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.home.presentation.HomeFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details">
+    </fragment>
+
 </navigation>

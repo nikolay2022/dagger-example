@@ -8,7 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.home.R
 import com.example.home.domain.models.TextItem
 
-class HomeAdapter(var items: List<TextItem>) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter(
+    var items: List<TextItem>,
+    private val listener: ItemClickListener
+    ) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+
+    interface ItemClickListener {
+        fun onItemClicked(item: TextItem)
+    }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.text_view)
@@ -21,6 +28,7 @@ class HomeAdapter(var items: List<TextItem>) : RecyclerView.Adapter<HomeAdapter.
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textView.text = items[position].text
+        holder.itemView.setOnClickListener { listener.onItemClicked(items[position]) }
     }
 
     override fun getItemCount() = items.size

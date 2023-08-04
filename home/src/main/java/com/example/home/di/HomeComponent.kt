@@ -1,5 +1,6 @@
 package com.example.home.di
 
+import com.example.home.presentation.DetailsFragment
 import com.example.home.presentation.HomeFragment
 import com.example.home.presentation.HomeViewModelFactory
 import dagger.Component
@@ -11,6 +12,7 @@ import dagger.Component
 interface HomeComponent {
 
     fun inject(fragment: HomeFragment)
+    fun inject(fragment: DetailsFragment)
 
     fun viewModelFactory(): HomeViewModelFactory
 
